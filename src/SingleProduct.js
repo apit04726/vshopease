@@ -27,6 +27,11 @@ const SingleProduct = () => {
     }
   }, [getSingleProduct, id]);
 
+  // scroll to top when navigating to a new product
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, [id]);
+
   // Safe destructuring: only if singleProduct has data
   const {
     name = "",

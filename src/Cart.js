@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import styled from "styled-components";
 import { useCartContext } from "./context/cart_context";
 import CartItem from "./components/CartItem";
@@ -7,6 +8,10 @@ import FormatPrice from "./Helpers/FormatPrice";
 
 const Cart = () => {
   const { cart, clearCart, total_price, shipping_fee } = useCartContext();
+  // scroll to top when cart page mounts
+  useEffect(() => {
+    window.scrollTo({ top: 0, left: 0, behavior: "smooth" });
+  }, []);
   if (cart.length === 0) {
     return (
       <EmptyDiv>
