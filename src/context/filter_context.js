@@ -9,6 +9,8 @@ const initialState = {
   all_products: [],
   grid_view: true,
   sorting_value: "lowest",
+  currentPage: 1,
+  productsPerPage: 9,
   filters: {
     text: "",
     category: "all",
@@ -52,6 +54,11 @@ export const FilterContextProvider = ({ children }) => {
   const clearFilters = () => {
     dispatch ({type: "CLEAR_FILTERS"});
   }
+
+  // Pagination function
+  const setCurrentPage = (page) => {
+    dispatch({ type: "SET_CURRENT_PAGE", payload: page });
+  };
   
   useEffect(() => {
     dispatch({ type: "FILTER_PRODUCTS" });
@@ -62,6 +69,21 @@ export const FilterContextProvider = ({ children }) => {
     dispatch({ type: "LOAD_FILTER_PRODUCTS", payload: products });
   }, [products]);
 
+  // Calculate pagination
+  const productsPerPage = state.productsPerPage || 9;
+  const totalProducts = state.filter_products.length;
+  const totalPages = Math.ceil(totalProducts / productsPerPage);
+  const indexOfLastProduct = state.currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = state.filter_products.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  // Reset to page 1 when filtered products change and current page is invalid
+  useEffect(() => {
+    if (totalPages > 0 && state.currentPage > totalPages) {
+      dispatch({ type: "SET_CURRENT_PAGE", payload: 1 });
+    }
+  }, [totalPages, state.currentPage]);
+
   return (
     <FilterContext.Provider
       value={{
@@ -71,6 +93,11 @@ export const FilterContextProvider = ({ children }) => {
         sorting,
         updateFilterValue,
         clearFilters,
+        setCurrentPage,
+        currentProducts,
+        totalPages,
+        totalProducts,
+        currentPage: state.currentPage,
       }}>
       {children}
     </FilterContext.Provider>

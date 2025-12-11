@@ -15,6 +15,7 @@ const filterReducer = (state, action) => {
                     minPrice,
                     price: maxPrice
                 },
+                currentPage: 1, // Reset to first page when products load
             };
 
         case "SET_GRID_VIEW":
@@ -128,6 +129,13 @@ const filterReducer = (state, action) => {
                     color: "all",
                     price: state.filters.maxPrice,
                 },
+                currentPage: 1, // Reset to first page when filters are cleared
+            };
+
+        case "SET_CURRENT_PAGE":
+            return {
+                ...state,
+                currentPage: action.payload,
             };
 
         default:

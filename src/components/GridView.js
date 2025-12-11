@@ -17,6 +17,18 @@ const GridView = ({ products }) => {
 // //  ==================================================
 const Wrapper = styled.section`
   padding: 9rem 0;
+  animation: fadeIn 0.5s ease-in-out;
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
 
   .container {
     max-width: 120rem;
