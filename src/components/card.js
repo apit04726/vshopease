@@ -94,7 +94,6 @@ const Card = () => {
           ...allAmazonProducts.slice(0, 3 - remaining)
         ];
       }
-      
       setCurrentProducts(nextProducts);
     }, 5000);
 
