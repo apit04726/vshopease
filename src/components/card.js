@@ -69,8 +69,6 @@ const Card = () => {
     link: "https://www.amazon.com/KEEPONFIT-Waterproof-Activity-Compatible-Gray/dp/B0DDQ2L5XG/ref=sr_1_23?crid=18S2RWX50KCTC&dib=eyJ2IjoiMSJ9.ZawZsnHOZWdeJsaT8LuA_jciVaSVAvPslwgD11IEKzNj7DTLWyi1Wgz2oENGvug1l1RgJutLHkgFp8ycUf1l_1TRoWn6pU6XHAMGTL99WU-1YxKkHZ5EYe4sbxTk37DuXbacSymZ-3FNp2zSAiiL5XOcLnvnyFw4c6LCaYMzG3w78PG1_Jywtwbnyc8svfRoSaUTjgNhumPWNG-TqKRCINzNrXe0XKplQCDMF2BuyLA.gSx36ZD-I9VmqjqDXl4u1qtGYv-ekZhikpWdWkORUfs&dib_tag=se&keywords=smart%2Bwatch&qid=1748413987&sprefix=%2Caps%2C325&sr=8-23&th=1"
   }
 ], []);
-
-
   // State for currently displayed products (3 at a time)
   const [currentProducts, setCurrentProducts] = useState(allAmazonProducts.slice(0, 3));
   const [currentIndex, setCurrentIndex] = useState(0);
