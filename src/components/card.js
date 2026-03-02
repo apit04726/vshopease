@@ -80,7 +80,6 @@ const Card = () => {
         const newIndex = (prevIndex + 3) % allAmazonProducts.length;
         return newIndex;
       });
-      
       // Get next 3 products (with wrap-around)
       const nextIndex = (currentIndex + 3) % allAmazonProducts.length;
       let nextProducts = [];
